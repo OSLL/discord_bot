@@ -3,8 +3,6 @@ from discord import utils
 
 import config
 
-from dotenv import load_dotenv
-
 # print(type(my_token))
 
 class MyClient(discord.Client):
