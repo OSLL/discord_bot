@@ -7,8 +7,6 @@ from dotenv import load_dotenv
 
 # print(type(my_token))
 
-delete_comand = "delete"
-
 class MyClient(discord.Client):
     async def on_ready(self):
         print('Log: {0}'.format(self.user))
@@ -26,7 +24,7 @@ class MyClient(discord.Client):
 
             if(len([i for i in member.roles if i.id in config.PRIVROLES]) >= 1):
                 words = [i for i in message.content.split(' ') if i != '']
-                if( words[0] == delete_comand and len(words) >= 0): 
+                if( words[0] == config.DELETE_COMAND and len(words) >= 0): 
                     for guild_member in message.guild.members:
                         #Check that user is not Admin
                         if(len([i for i in guild_member.roles if i.id == config.ADMIN_ROLE]) == 0):
