@@ -3,7 +3,11 @@ GUILD = "Yuor discord server name"
 
 ADMIN_ROLE = "Admin tocken INT"
 
-PRIV_ROLES = ["Privelege tokens (INT)"]
+ADMIN_CHANEL_ID = 1022907589392093237
+
+PRIVROLES = ["Privelege tokens (INT)"]
+
+NEWUSERROLE_ID = 1022913054645702706
 
 POST_ID = 1022855084993937448
 
