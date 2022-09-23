@@ -27,7 +27,7 @@ class MyClient(discord.Client):
                 if( words[0] == config.DELETE_COMAND and len(words) >= 0): 
                     for guild_member in message.guild.members:
                         #Check that user is not Admin
-                        if(len([i for i in guild_member.roles if i.id == config.ADMIN_ROLE]) == 0):
+                        if(len([i for i in guild_member.roles if i.id in config.PRIVROLES]) == 0):
                             #Check user's roles
                             if(len([i for i in guild_member.roles if i.name in words[1:]])):
                                 #Delete user
