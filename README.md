@@ -11,6 +11,7 @@
     - Manage roles 
     - Kick members 
     - Read message/view channels
+    - Send messages
 2. В параметрах BOT/Privileged Gateway Intents указать
     - server members intent
     - message content intent
