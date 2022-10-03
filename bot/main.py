@@ -11,8 +11,46 @@ class MyClient(discord.Client):
         print('Log: {0}'.format(self.user))
         for guild in client.guilds:
             if guild.name == config.GUILD:
+                try:
+                    channel = guild.get_channel(config.ADMIN_CHANEL_ID)
+                except Exception as e:
+                    print("[ERROR] Admin chanel not found")
+
+                try:
+                    guild.get_role(config.ADMIN_ROLE)
+                except Exception as e:
+                    print("[ERROR] Admin role not found!")
+                
+                try:
+                    for role in config.PRIVROLES :guild.get_role(role)
+                except Exception as e:
+                    print("[ERROR] Privelege roles not found!")
+
+                try:
+                    new_user_role = guild.get_role(config.NEWUSERROLE_ID)
+                except Exception as e:
+                    print("[ERROR] New User role not found!")
+                
+                try:
+                    for key in config.ROLES.keys() :guild.get_role(config.ROLES[key])
+                except Exception as e:
+                    print("[ERROR] Add roles not found!")
+
+                try:
+                    for role in config.EXCROLES :guild.get_role(role)
+                except Exception as e:
+                    print("[ERROR] Exc role not found!")
+                
                 break
-        await self.get_channel(config.ADMIN_CHANEL_ID).send("[INFO] BOT RUN")
+
+        try:
+            await channel.send("[INFO] BOT RUN")
+            await channel.send("[INFO] For delete action send '{0} <role name>' in {1}".format(config.DELETE_COMAND, channel.name))
+            await channel.send("[INFO] After JOIN user will get the role {0}".format(new_user_role.name))
+
+        except Exception as e:
+            print("[ERROR] Permission denied") 
+
 
 
 # Delete function
@@ -81,6 +119,7 @@ class MyClient(discord.Client):
             await self.get_channel(config.ADMIN_CHANEL_ID).sendnt('[ERROR] KeyError, no role found for ' + emoji)
         except Exception as e:
             print(repr(e))
+
 
 intents = discord.Intents.default()
 intents.message_content = True
